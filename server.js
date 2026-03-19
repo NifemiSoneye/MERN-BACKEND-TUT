@@ -5,8 +5,11 @@ const path = require("path");
 const { logger } = require("./middleware/logger");
 const errorHandler = require("./middleware/errorHandler");
 const cookieParser = require("cookie-parser");
+const cors = require("cors");
 
 app.use(logger);
+
+app.use(cors());
 
 app.use(express.json());
 
