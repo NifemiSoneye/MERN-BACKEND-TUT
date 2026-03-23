@@ -4,9 +4,9 @@ const notesController = require("../controllers/notesController");
 
 router
   .route("/")
-  .get(Controller.getAllUsers)
-  .post(usersController.createNewUser)
-  .patch(usersController.updateUser)
-  .delete(usersController.deleteUser);
+  .get(notesController.getAllNotes)
+  .post(notesController.createNewNote)
+  .patch(notesController.updateNote)
+  .delete(notesController.deleteNote);
 
 module.exports = router;
