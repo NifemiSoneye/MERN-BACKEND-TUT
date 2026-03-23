@@ -99,7 +99,7 @@ const updateUser = asyncHandler(async (req, res) => {
 });
 
 // Delete a User
-// Patch /users
+// Delete /users
 //access Private
 
 const deleteUser = asyncHandler(async (req, res) => {

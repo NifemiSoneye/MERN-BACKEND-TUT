@@ -18,6 +18,12 @@ const createNewNote = asyncHandler(async (req, res) => {
     return res.status(400).json({ message: "All fields are required" });
   }
 
+  const duplicate = await Note.findOne({ title }).lean().exec();
+
+  if (duplicate) {
+    return res.status(409).json({ message: "Duplicate note title" });
+  }
+
   const noteObject = { user, title, text };
 
   const note = await Note.create(noteObject);
@@ -49,7 +55,7 @@ const updateNote = asyncHandler(async (req, res) => {
   //Allow updates to original user
 
   if (duplicate && duplicate?._id.toString() !== id) {
-    return res.status(409).json({ message: "Duplicate username" });
+    return res.status(409).json({ message: "Duplicate title" });
   }
 
   note.user = user;
